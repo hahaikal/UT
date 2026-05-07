@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITTA - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">SITTA</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Beranda</a></li>
+            <li><a href="stok.html">Info Stok</a></li>
+            <li><a href="tracking.html">Lacak Pengiriman</a></li>
+            <li><a href="index.html">Keluar</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="card">
+            <h2 style="color: #0056b3;"><span id="greetingText">Halo</span>, <span id="userName">Mahasiswa</span>!</h2>
+            <p style="margin-top: 10px; color: #555;">Selamat datang di Sistem Pemesanan Bahan Ajar. Silakan gunakan menu navigasi di atas untuk mengakses berbagai fitur yang tersedia.</p>
+        </div>
+
+        <div class="card" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px; padding: 20px; background: #e0f0ff; border-radius: 8px; text-align: center;">
+                <h3 style="color: #0056b3;">Pesanan Aktif</h3>
+                <p style="font-size: 24px; font-weight: bold; margin-top: 10px;">2</p>
+            </div>
+            <div style="flex: 1; min-width: 200px; padding: 20px; background: #e0f0ff; border-radius: 8px; text-align: center;">
+                <h3 style="color: #0056b3;">Terkirim</h3>
+                <p style="font-size: 24px; font-weight: bold; margin-top: 10px;">5</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

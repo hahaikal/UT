@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITTA - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1>SITTA</h1>
+            <p>Sistem Pemesanan Bahan Ajar</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Masukkan Email Anda">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Masukkan Password Anda">
+                </div>
+                <button type="submit" class="btn">Masuk</button>
+            </form>
+
+            <div class="login-links">
+                <a href="#" id="forgotLink">Lupa password?</a>
+                <a href="#" id="registerLink">Daftar</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">Judul Modal</h2>
+            <p id="modalDesc" style="margin-top: 15px; color: #555;">Deskripsi Modal</p>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITTA - Lacak Pengiriman</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">SITTA</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Beranda</a></li>
+            <li><a href="stok.html">Info Stok</a></li>
+            <li><a href="tracking.html">Lacak Pengiriman</a></li>
+            <li><a href="index.html">Keluar</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="card">
+            <h2 style="color: #0056b3; margin-bottom: 20px;">Lacak Pengiriman</h2>
+            
+            <div class="search-box">
+                <input type="text" id="trackingInput" placeholder="Masukkan No. Delivery Order (Contoh: DO-123456)">
+                <button id="trackingBtn" class="btn" style="width: auto; padding: 12px 24px;">Cari</button>
+            </div>
+
+            <div id="trackingResult" class="hidden">
+                <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 10px;">Detail Pengiriman</h3>
+                <p><strong>Penerima:</strong> <span id="trackPenerima">Mahasiswa A</span></p>
+                <p><strong>Ekspedisi:</strong> <span id="trackEkspedisi">SITTA Express</span></p>
+                <p><strong>Nomor Resi:</strong> <span id="trackResi" style="color: #0056b3; font-weight: bold;">DO-123456</span></p>
+
+                <div class="timeline" id="trackingTimeline">
+                    <div class="timeline-item">
+                        <h4>Paket sedang dalam perjalanan ke alamat tujuan</h4>
+                        <p>15 Mei 2024, 09:30 WIB - Kurir: Budi</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Paket telah keluar dari gudang sortir pusat</h4>
+                        <p>14 Mei 2024, 21:15 WIB - Gudang Jakarta</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Paket diserahkan ke pihak ekspedisi</h4>
+                        <p>14 Mei 2024, 15:00 WIB - SITTA Hub</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Pesanan diproses dan sedang disiapkan</h4>
+                        <p>13 Mei 2024, 10:00 WIB - Kampus Pusat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
