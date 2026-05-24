@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking DO - SITTA UT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+
+    <div id="app" class="max-w-3xl mx-auto space-y-8">
+        
+        <div class="flex items-center justify-between bg-white p-4 rounded-xl shadow-md border-t-4 border-[#00529C]">
+            <div>
+                <h1 class="text-2xl font-bold text-[#00529C]">Tracking DO / Resi</h1>
+                <p class="text-sm text-gray-500">Lacak status pengiriman paket bahan ajar Anda</p>
+            </div>
+            <a href="index.html" class="text-sm text-white bg-gray-500 hover:bg-gray-600 px-4 py-2 rounded">Kembali ke Beranda</a>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <form @submit.prevent="cariResi" class="flex flex-col md:flex-row gap-4">
+                     Watcher di Vue akan memantau nomorDO ini saat diketik. -->
+                <input type="text" v-model="nomorDO" placeholder="Masukkan Nomor DO (contoh: DO2025-0001)" 
+                       class="flex-1 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-[#00529C] focus:border-transparent">
+                
+                <button type="submit" class="bg-[#FDB913] hover:bg-yellow-500 text-[#00529C] font-bold py-3 px-6 rounded shadow transition">
+                    Cari Paket
+                </button>
+            </form>
+
+            <div v-if="pesanError" class="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
+                <p class="font-bold">Pencarian Gagal</p>
+                <p>{{ pesanError }}</p>
+            </div>
+        </div>
+
+        <div v-if="hasilTracking" class="bg-white rounded-xl shadow-md overflow-hidden border-t-4 border-green-500">
+            
+            <div class="p-6 bg-green-50 border-b border-green-100">
+                <h2 class="text-xl font-bold text-green-800 mb-2">Status: {{ hasilTracking.status }}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div>
+                        <p><span class="font-semibold">Nama:</span> {{ hasilTracking.nama }}</p>
+                        <p><span class="font-semibold">NIM:</span> {{ hasilTracking.nim }}</p>
+                        <p><span class="font-semibold">Kode Paket:</span> {{ hasilTracking.paket }}</p>
+                    </div>
+                    <div>
+                        <p><span class="font-semibold">Ekspedisi:</span> {{ hasilTracking.ekspedisi }}</p>
+                        <p><span class="font-semibold">Tgl Kirim:</span> {{ hasilTracking.tanggalKirim }}</p>
+                        <p><span class="font-semibold">Total Nilai:</span> {{ toRupiah(hasilTracking.total) }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Riwayat Perjalanan (Timeline)</h3>
+                <div class="relative border-l-2 border-green-300 ml-3">
+                    
+                    <div v-for="(log, index) in hasilTracking.perjalanan" :key="index" class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-4 h-4 bg-green-500 rounded-full -left-[9px] ring-4 ring-white"></span>
+                        
+                        <h4 class="mb-1 text-sm font-semibold text-gray-900">{{ log.keterangan }}</h4>
+                        <time class="block mb-2 text-xs font-normal leading-none text-gray-400">{{ log.waktu }}</time>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="js/dataBahanAjar.js"></script>
+    <script src="js/tracking-app.js"></script>
+</body>
+</html>
