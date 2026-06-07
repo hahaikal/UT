@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Bahan Ajar Universitas Terbuka</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app" class="container">
+        <header>
+            <h1>Sistem Pemesanan & Inventori Bahan Ajar</h1>
+            <p>Universitas Terbuka</p>
+        </header>
+
+        <div v-if="loading" style="text-align: center; padding: 50px;">
+            <h3>Memuat data...</h3>
+        </div>
+
+        <template v-else>
+            <div class="nav-tabs">
+                <button class="nav-tab" :class="{ active: currentTab === 'stok' }" @click="currentTab = 'stok'">Stok Bahan Ajar</button>
+                <button class="nav-tab" :class="{ active: currentTab === 'tracking' }" @click="currentTab = 'tracking'">Tracking DO</button>
+                <button class="nav-tab" :class="{ active: currentTab === 'order' }" @click="currentTab = 'order'">Pemesanan (Order)</button>
+            </div>
+
+            <div class="tab-content">
+                <div v-show="currentTab === 'stok'">
+                    <stock-table 
+                        :stok="dataUtama.stok" 
+                        :upbjj-list="dataUtama.upbjjList" 
+                        :kategori-list="dataUtama.kategoriList"
+                        @add-stok="handleAddStok"
+                        @update-stok="handleUpdateStok"
+                        @delete-stok="handleDeleteStok"
+                    ></stock-table>
+                </div>
+
+                <div v-show="currentTab === 'tracking'">
+                    <do-tracking
+                        :tracking-data="dataUtama.tracking"
+                        @add-progress="handleAddProgress"
+                    ></do-tracking>
+                </div>
+
+                <div v-show="currentTab === 'order'">
+                    <order-form
+                        :pengiriman-list="dataUtama.pengirimanList"
+                        :paket-list="dataUtama.paket"
+                        :next-do-number="nextDoNumber"
+                        @submit-do="handleSubmitDo"
+                    ></order-form>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <script src="js/services/api.js"></script>
+
+    <script src="js/components/app-modal.js"></script>
+    <script src="js/components/status-badge.js"></script>
+    <script src="js/components/stock-table.js"></script>
+    <script src="js/components/do-tracking.js"></script>
+    <script src="js/components/order-form.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
